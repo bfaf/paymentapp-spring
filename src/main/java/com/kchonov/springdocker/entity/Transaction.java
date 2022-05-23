@@ -1,6 +1,7 @@
 package com.kchonov.springdocker.entity;
 
 import com.kchonov.springdocker.entity.constants.Validators;
+import com.kchonov.springdocker.entity.validators.UUID;
 import com.sun.istack.NotNull;
 import java.io.Serializable;
 import java.util.Date;
@@ -31,6 +32,7 @@ public class Transaction implements Serializable {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = "uuid", unique = true)
+    @UUID
     private String uuid;
     @NotNull
     @Range(min = 1)

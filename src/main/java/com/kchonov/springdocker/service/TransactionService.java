@@ -31,6 +31,7 @@ public class TransactionService implements ICleanup {
 
     @Modifying
     @Transactional
+    @Override
     public void clean(long timestamp) {
         transactionRepository.deleteByTimestampCreatedLessThan(Utilities.fixTimezone(timestamp));
     }

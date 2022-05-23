@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @PreAuthorize("isAuthenticated()")
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/merchants")
 public class MerchantController {
 
     Logger logger = LoggerFactory.getLogger(MerchantController.class);
@@ -28,17 +28,15 @@ public class MerchantController {
     @Autowired
     private MerchantService merchantService;
 
-    // @PreAuthorize("hasRole('ROLE_ADMIN') and hasRole('ROLE_MERCHANT')")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @GetMapping("/items")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_MERCHANT')")
+    @GetMapping("/")
     @ResponseBody
-    public List<Merchant> items() {
-        logger.info("Listing all items");
+    public List<Merchant> getAll() {
         return merchantService.findAll();
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @PostMapping("/import/merchants")
+    @PostMapping("/import")
     public ResponseEntity<ResponseMessage> importMerchants(@RequestParam("file") MultipartFile file) {
         return this.merchantService.importMerchants(file);
     }

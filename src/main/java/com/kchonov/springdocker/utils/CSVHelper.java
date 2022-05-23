@@ -20,13 +20,9 @@ import org.springframework.web.multipart.MultipartFile;
 public class CSVHelper {
 
     public static String TYPE = "text/csv";
-    static String[] HEADERs = {"Id", "Title", "Description", "Published"};
 
     public static boolean hasCSVFormat(MultipartFile file) {
-        if (!TYPE.equals(file.getContentType())) {
-            return false;
-        }
-        return true;
+        return TYPE.equals(file.getContentType());
     }
 
     public static List<Merchant> csvToMerchants(InputStream is) {
@@ -50,4 +46,5 @@ public class CSVHelper {
             throw new RuntimeException("fail to parse CSV file: " + e.getMessage());
         }
     }
+    
 }
