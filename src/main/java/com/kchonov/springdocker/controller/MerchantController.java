@@ -40,5 +40,7 @@ public class MerchantController {
     public ResponseEntity<ResponseMessage> importMerchants(@RequestParam("file") MultipartFile file) {
         return this.merchantService.importMerchants(file);
     }
+    
+    
 
 }

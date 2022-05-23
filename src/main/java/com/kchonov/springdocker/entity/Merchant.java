@@ -43,4 +43,7 @@ public class Merchant implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestampCreated;
 
+    public boolean isActive() {
+        return status.compareToIgnoreCase("active") == 0;
+    }
 }

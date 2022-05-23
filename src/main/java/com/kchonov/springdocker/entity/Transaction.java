@@ -29,9 +29,6 @@ import org.hibernate.validator.constraints.Range;
 public class Transaction implements Serializable {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "uuid", unique = true)
     @UUID
     private String uuid;
     @NotNull
@@ -51,5 +48,6 @@ public class Transaction implements Serializable {
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
+    @NotNull
     private Date timestampCreated;
 }

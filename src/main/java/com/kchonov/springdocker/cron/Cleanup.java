@@ -1,5 +1,6 @@
 package com.kchonov.springdocker.cron;
 
+import com.kchonov.springdocker.entity.constants.Misc;
 import java.util.Calendar;
 import java.util.List;
 import org.slf4j.Logger;
@@ -21,9 +22,9 @@ public class Cleanup {
         if (list.isEmpty()) {
             logger.error("No classes implement cleanup functionality");
         }
-        long milis = Calendar.getInstance().getTimeInMillis() - 10;
+        long oneHourOld = Calendar.getInstance().getTimeInMillis() - Misc.ONE_HOUR;
         list.forEach(c -> {
-            c.clean(milis);
+            c.clean(oneHourOld);
         });
     }
 }

@@ -1,6 +1,7 @@
 package com.kchonov.springdocker.utils;
 
 import com.kchonov.springdocker.entity.Merchant;
+import com.kchonov.springdocker.entity.Transaction;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,7 +38,7 @@ public class CSVHelper {
                         csvRecord.get("email"),
                         csvRecord.get("status"),
                         Long.parseLong(csvRecord.get("total_transaction_sum")),
-                        new Date()
+                        null
                 );
                 merchants.add(merchant);
             }
@@ -46,5 +47,6 @@ public class CSVHelper {
             throw new RuntimeException("fail to parse CSV file: " + e.getMessage());
         }
     }
+    
     
 }

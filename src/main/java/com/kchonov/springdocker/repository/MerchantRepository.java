@@ -15,4 +15,6 @@ public interface MerchantRepository extends JpaRepository<Merchant, Integer> {
     @Modifying
     @Transactional
     void deleteByTimestampCreatedLessThan(Date offset);
+    
+    Merchant findByEmail(String email);
 }

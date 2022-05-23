@@ -6,7 +6,6 @@ import com.kchonov.springdocker.entity.constants.Messages;
 import com.kchonov.springdocker.messages.ResponseMessage;
 import com.kchonov.springdocker.repository.MerchantRepository;
 import com.kchonov.springdocker.utils.CSVHelper;
-import com.kchonov.springdocker.utils.Utilities;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -38,6 +37,10 @@ public class MerchantService implements ICleanup {
     public void insertAll(List<Merchant> transactions) {
         merchantRepository.saveAll(transactions);
     }
+    
+    public Merchant findByEmail(String email) {
+        return merchantRepository.findByEmail(email);
+    }
 
     @Modifying
     @Transactional
@@ -53,7 +56,7 @@ public class MerchantService implements ICleanup {
                 return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseMessage(message));
             } catch (Exception e) {
                 logger.error("Error occured during file upload");
-                message = Messages.FILE_UPLOAD_ERROR(file.getOriginalFilename()); // "Could not upload the file: " + file.getOriginalFilename() + "!";
+                message = Messages.FILE_UPLOAD_ERROR(file.getOriginalFilename());
                 return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
             }
         }
@@ -66,6 +69,6 @@ public class MerchantService implements ICleanup {
     @Modifying
     @Transactional
     public void clean(long timestamp) {
-        merchantRepository.deleteByTimestampCreatedLessThan(Utilities.fixTimezone(timestamp));
+        // merchantRepository.deleteByTimestampCreatedLessThan(Utilities.fixTimezone(timestamp));
     }
 }

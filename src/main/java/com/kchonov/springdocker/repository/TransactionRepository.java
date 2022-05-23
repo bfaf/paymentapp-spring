@@ -15,4 +15,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
     @Modifying
     @Transactional
     void deleteByTimestampCreatedLessThan(Date offset);
+    
+    Transaction findByUuid(String uuid);
 }
