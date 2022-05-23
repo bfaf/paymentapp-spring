@@ -1,5 +1,6 @@
 package com.kchonov.springdocker.service;
 
+import com.kchonov.springdocker.cron.ICleanup;
 import com.kchonov.springdocker.entity.Item;
 import com.kchonov.springdocker.repository.ItemRepository;
 import java.util.List;
