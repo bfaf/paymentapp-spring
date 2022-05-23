@@ -50,6 +50,10 @@ public class TransactionService implements ICleanup {
         transactionRepository.saveAll(transactions);
     }
     
+    public List<Transaction> findbyEmail(String email) {
+        return transactionRepository.findByCustomerEmail(email);
+    }
+    
     public void deleteOne(String id) {
         Transaction transaction = transactionRepository.findByUuid(id);
         if (transaction != null) {

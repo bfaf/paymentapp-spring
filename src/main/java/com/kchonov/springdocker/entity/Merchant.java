@@ -5,6 +5,8 @@ import com.sun.istack.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,11 +25,15 @@ import org.hibernate.annotations.CreationTimestamp;
 @NoArgsConstructor
 public class Merchant implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
     @NotNull
     private String name;
+    
     private String description;
-
-    @Id
+    
     @NotNull
     @Email
     private String email;

@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author Krasi
  */
-public interface MerchantRepository extends JpaRepository<Merchant, Integer> {
+public interface MerchantRepository extends JpaRepository<Merchant, Long> {
 
     @Modifying
     @Transactional

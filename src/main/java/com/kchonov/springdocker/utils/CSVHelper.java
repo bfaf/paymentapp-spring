@@ -33,6 +33,7 @@ public class CSVHelper {
             Iterable<CSVRecord> csvRecords = csvParser.getRecords();
             for (CSVRecord csvRecord : csvRecords) {
                 Merchant merchant = new Merchant(
+                        null,
                         csvRecord.get("name"),
                         csvRecord.get("description"),
                         csvRecord.get("email"),

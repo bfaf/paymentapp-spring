@@ -46,9 +46,9 @@ public class MerchantServiceTest {
         merchantService = new MerchantService(merchantRepository);
 
         merchants = new ArrayList<>();
-        merchants.add(new Merchant("John", "", "test1@test.com", "active", 100l, new Date(1653111490)));
-        merchants.add(new Merchant("Alex", "", "test2@test.com", "active", 100l, new Date(1653111490)));
-        merchants.add(new Merchant("Sandra", "", "test3@test.com", "active", 100l, new Date(1653111490)));
+        merchants.add(new Merchant(1L, "John", "", "test1@test.com", "active", 100l, new Date(1653111490)));
+        merchants.add(new Merchant(2L, "Alex", "", "test2@test.com", "active", 100l, new Date(1653111490)));
+        merchants.add(new Merchant(3L, "Sandra", "", "test3@test.com", "active", 100l, new Date(1653111490)));
     }
 
     /**

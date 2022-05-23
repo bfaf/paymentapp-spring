@@ -28,9 +28,17 @@ public class MerchantService implements ICleanup {
     public List<Merchant> findAll() {
         return merchantRepository.findAll();
     }
+    
+    public Merchant findById(Long id) {
+        return merchantRepository.getById(id);
+    }
+    
+    public void delete(Long id) {
+        merchantRepository.deleteById(id);
+    }
 
-    public void insertOne(Merchant newMerchant) {
-        merchantRepository.save(newMerchant);
+    public Merchant insertOne(Merchant newMerchant) {
+        return merchantRepository.save(newMerchant);
     }
 
     @Transactional
