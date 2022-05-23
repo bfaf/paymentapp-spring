@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Cleanup {
-    
+
     Logger logger = LoggerFactory.getLogger(Cleanup.class);
-    
+
     @Autowired
     private List<ICleanup> list;
-    
+
     @Scheduled(cron = "0 0 * * * *")
     public void run() {
         if (list.isEmpty()) {

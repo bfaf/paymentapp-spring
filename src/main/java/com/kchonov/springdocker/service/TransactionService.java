@@ -13,21 +13,22 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 public class TransactionService implements ICleanup {
+
     private final TransactionRepository transactionRepository;
-    
+
     public List<Transaction> findAll() {
         return transactionRepository.findAll();
     }
-    
+
     public void insertOne(Transaction newMerchant) {
         transactionRepository.save(newMerchant);
     }
-    
+
     @Transactional
     public void insertAll(List<Transaction> transactions) {
         transactionRepository.saveAll(transactions);
     }
-    
+
     @Modifying
     @Transactional
     public void clean(long timestamp) {

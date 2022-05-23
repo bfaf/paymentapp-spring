@@ -34,20 +34,20 @@ public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAda
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .csrf().disable()
-            .cors().disable()
-            .authorizeRequests()
-            .antMatchers("/**").authenticated()
-            .anyRequest().authenticated()
-            .and()
-            .exceptionHandling()
-            .authenticationEntryPoint(authenticationEntryPoint)
-            .and()
-            .httpBasic()
-            .and()
-            .logout()
-            .logoutUrl("/logout")
-            .deleteCookies("JSESSIONID");
+                .csrf().disable()
+                .cors().disable()
+                .authorizeRequests()
+                .antMatchers("/**").authenticated()
+                .anyRequest().authenticated()
+                .and()
+                .exceptionHandling()
+                .authenticationEntryPoint(authenticationEntryPoint)
+                .and()
+                .httpBasic()
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .deleteCookies("JSESSIONID");
     }
 
     @Bean

@@ -1,6 +1,6 @@
 package com.kchonov.springdocker.entity;
 
-import com.kchonov.springdocker.entity.validators.Validators;
+import com.kchonov.springdocker.entity.constants.Validators;
 import com.sun.istack.NotNull;
 import java.io.Serializable;
 import java.util.Date;
@@ -26,7 +26,7 @@ import org.hibernate.validator.constraints.Range;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Transaction implements Serializable {
-    
+
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -46,7 +46,7 @@ public class Transaction implements Serializable {
     private String customerPhone;
     @NotNull
     private String referenceId;
-    
+
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestampCreated;

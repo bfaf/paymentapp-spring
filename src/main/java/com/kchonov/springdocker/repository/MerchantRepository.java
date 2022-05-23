@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Krasi
  */
 public interface MerchantRepository extends JpaRepository<Merchant, Integer> {
+
     @Modifying
     @Transactional
     void deleteByTimestampCreatedLessThan(Date offset);

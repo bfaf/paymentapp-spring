@@ -10,10 +10,11 @@ import java.util.TimeZone;
  * @author Krasi
  */
 public class Utilities {
+
     public static Date fixTimezone(long timestamp) {
         Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
         calendar.setTimeInMillis(timestamp);
-        
+
         return calendar.getTime();
     }
 }
