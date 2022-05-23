@@ -2,9 +2,7 @@ package com.kchonov.springdocker.service;
 
 import com.kchonov.springdocker.entity.Merchant;
 import com.kchonov.springdocker.repository.MerchantRepository;
-import com.kchonov.springdocker.utils.Utilities;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
@@ -14,7 +12,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.times;
