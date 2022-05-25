@@ -4,7 +4,6 @@ import com.kchonov.springdocker.entity.AbstractTransaction;
 import java.util.List;
 
 import com.kchonov.springdocker.entity.Merchant;
-import com.kchonov.springdocker.entity.Transaction;
 import com.kchonov.springdocker.messages.ResponseMessage;
 import com.kchonov.springdocker.service.MerchantService;
 import com.kchonov.springdocker.service.TransactionService;

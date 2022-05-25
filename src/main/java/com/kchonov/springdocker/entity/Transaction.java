@@ -2,16 +2,15 @@ package com.kchonov.springdocker.entity;
 
 import com.kchonov.springdocker.entity.constants.Validators;
 import com.kchonov.springdocker.entity.validators.UUID;
+import com.kchonov.springdocker.entity.validators.ValidEmail;
 import com.sun.istack.NotNull;
 import java.io.Serializable;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -41,7 +40,7 @@ public class Transaction implements Serializable {
     protected String status;
     
     @NotNull
-    @Email
+    @ValidEmail
     private String customerEmail;
     
     @NotNull

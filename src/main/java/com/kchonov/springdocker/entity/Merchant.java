@@ -1,6 +1,7 @@
 package com.kchonov.springdocker.entity;
 
 import com.kchonov.springdocker.entity.constants.Validators;
+import com.kchonov.springdocker.entity.validators.ValidEmail;
 import com.sun.istack.NotNull;
 import java.io.Serializable;
 import java.util.Date;
@@ -10,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,7 +35,7 @@ public class Merchant implements Serializable {
     private String description;
     
     @NotNull
-    @Email
+    @ValidEmail
     private String email;
 
     @NotNull
