@@ -1,5 +1,6 @@
 package com.kchonov.springdocker.controller;
 
+import com.kchonov.springdocker.entity.AbstractTransaction;
 import java.util.List;
 
 import com.kchonov.springdocker.entity.Merchant;
@@ -72,7 +73,7 @@ public class MerchantController {
     public ResponseEntity<HttpStatus> deleteMerchant(@CurrentSecurityContext(expression = "authentication?.name") String username, @PathVariable("id") Long id) {
         Merchant merchant = merchantService.findById(id);
         if (merchant != null) {
-            List<Transaction> transactions = transactionService.findbyEmail(merchant.getEmail());
+            List<AbstractTransaction> transactions = transactionService.findbyEmail(merchant.getEmail());
             if (transactions.isEmpty()) {
                 merchantService.delete(id);
                 logger.info(username + " deleted merchant " + merchant.getEmail());

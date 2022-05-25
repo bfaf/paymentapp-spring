@@ -1,5 +1,6 @@
 package com.kchonov.springdocker.controller;
 
+import com.kchonov.springdocker.entity.AbstractTransaction;
 import com.kchonov.springdocker.entity.Transaction;
 import com.kchonov.springdocker.service.TransactionService;
 import java.net.URISyntaxException;
@@ -29,14 +30,24 @@ public class TransactionController {
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_MERCHANT')")
     @GetMapping("/")
     @ResponseBody
-    public List<Transaction> getAll() {
+    public List<AbstractTransaction> getAll() {
         return transactionService.findAll();
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/")
-    public ResponseEntity<Transaction> addTransaction(@RequestBody Transaction transaction) throws URISyntaxException {
-        Transaction createdTransaction = transactionService.insertOne(transaction);
+    public ResponseEntity<AbstractTransaction> addTransaction(@RequestBody Transaction transaction) throws URISyntaxException {
+        AbstractTransaction newTransacton = new AbstractTransaction(
+                transaction.getUuid(),
+                transaction.getAmount(),
+                transaction.getStatus(),
+                transaction.getCustomerEmail(),
+                transaction.getCustomerPhone(),
+                transaction.getReferenceId(),
+                null,
+                null
+        );
+        AbstractTransaction createdTransaction = transactionService.insertOne(newTransacton);
         if (createdTransaction == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -46,8 +57,8 @@ public class TransactionController {
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PutMapping("/{id}")
-    public ResponseEntity<Transaction> updateTransaction(@PathVariable("uuid") String id, @RequestBody Transaction transaction) throws URISyntaxException {
-        Transaction transactionData = transactionService.findByUUID(id);
+    public ResponseEntity<AbstractTransaction> updateTransaction(@PathVariable("uuid") String id, @RequestBody Transaction transaction) throws URISyntaxException {
+        AbstractTransaction transactionData = transactionService.findByUUID(id);
         if (transactionData != null) {
             transactionData.setAmount(transaction.getAmount());
             transactionData.setCustomerEmail(transaction.getCustomerEmail());

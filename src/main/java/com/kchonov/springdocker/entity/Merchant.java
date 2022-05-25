@@ -52,4 +52,12 @@ public class Merchant implements Serializable {
     public boolean isActive() {
         return status.compareToIgnoreCase("active") == 0;
     }
+    
+    public void acceptPayment(Long amount) {
+        this.totalTransactionSum += amount;
+    }
+    
+    public void refundPayment(Long amount) {
+        this.totalTransactionSum -= amount;
+    }
 }
