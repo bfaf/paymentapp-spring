@@ -1,0 +1,3 @@
+username,password,enabled,role
+krasi,test,1,ROLE_ADMIN
+merch1,merch1,1,ROLE_MERCHANT
